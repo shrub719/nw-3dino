@@ -13,8 +13,6 @@ obj input_file obj_name:
 # obj_name contains .obj and .obj file name (e.g. dino)
 dev-obj obj_name:
     just obj build/obj/meshes/{{obj_name}}.obj {{obj_name}}
-    cp target/obj/{{obj_name}}.pbj target/thumbv7em-none-eabihf/debug
-    cp target/obj/{{obj_name}}.pbj target/thumbv7em-none-eabihf/release
 
 
 # ===== DEVICE =====
