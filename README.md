@@ -63,7 +63,7 @@ See [BUILDING.md](build/BUILDING.md) for instructions on how to build the app or
 
 ## Licensing and credits
 
-Dog model in `obj/dino.obj` and `dino.pbj`: [TODO](TODO) by [TODO](TODO) Via Poly Pizza.
+Dinosaur model in `obj/dino.obj` and `dino.pbj`: Substitute from Pokémon Stadium 2 via [The Models Resource](https://models.spriters-resource.com/nintendo_64/pokemonstadium2/asset/312410/).
 
 This project is a third-party app and is not affiliated with NumWorks. NumWorks is a registered trademark of NumWorks SAS.
 
