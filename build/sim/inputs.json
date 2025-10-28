@@ -1,0 +1,15 @@
+{
+    "D_DOWN": ["DOWN", "S"],
+    "D_UP": ["UP", "W"],
+    "D_LEFT": ["LEFT", "A"],
+    "D_RIGHT": ["RIGHT", "D"],
+    "D_SP_1": ["LCTRL", "RCTRL", "E"],
+    "D_SP_2": ["LSHIFT", "RSHIFT", "Q"],
+
+    "INCREASE": ["KP_PLUS", "EQUALS", "R", "KP_MINUS"],
+    "DECREASE": ["MINUS", "F"],
+
+    "SWITCH": ["RETURN"],
+
+    "RESET": ["BACKSPACE"]
+}
