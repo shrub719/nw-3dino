@@ -11,8 +11,6 @@ A 3D model viewer for NumWorks Epsilon.
 
 ### NumWorks calculator
 
-The app supports importing 3D models as `.pbj`.
-
 1. Go to the [latest release](https://github.com/shrub719/nw-3dino/releases/latest)
 
 1. Download `nw_3dino.nwa`  
@@ -36,7 +34,9 @@ The app supports importing 3D models as `.pbj`.
 
 1. Download the `.nwb` file for your operating system
 
-    > **Note:** on Windows, use WSL.
+   > **Note:** on Windows, use WSL.  
+
+   *Optionally, download the example `dino.pbj`*
 
 1. Get the simulator for your operating system
    > **Note:** NumWorks does not allow simulators to be redistributed, so you will have to [patch and build the simulator yourself](build/BUILDING.md#building-the-simulator).
