@@ -1,0 +1,114 @@
+name: Build
+on: 
+  pull_request:
+    paths-ignore: 
+      - '**.md'
+      - 'LICENSE'
+      - 'prototype/**'
+      - 'build/sim/**'
+    branches:
+      - main
+  push:
+    paths-ignore: 
+      - '**.md'
+      - 'LICENSE'
+      - 'prototype/**'
+      - 'build/sim/**'
+    branches:
+      - main
+
+jobs:
+
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Nwlink
+        run: |
+          npm install -g nwlink
+          echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly    
+          target: thumbv7em-none-eabihf
+
+      - name: Install just
+        uses: extractions/setup-just@v3
+
+      - name: Prepare for building
+        run: mkdir -p target/output
+        
+      - name: Build nwa
+        run: |
+          just build
+          mv target/thumbv7em-none-eabihf/release/nw_3dino target/output/nw_3dino.nwa
+      
+      - name: Build nwa (obj)
+        run: |
+          just build o
+          mv target/thumbv7em-none-eabihf/release/nw_3dino target/output/nw_3dino_obj.nwa
+
+      - name: Pack test obj
+        run: |
+          just obj build/obj/Mesh_Beagle.obj dog
+          mv target/obj/dog.pbj target/output/dog.pbj
+
+      - name: Build nwb
+        run: |
+          just nwb-build
+          mv target/x86_64-unknown-linux-gnu/release/libnw_3dino_sim.so target/output/nw_3dino_linux.nwb
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nw_3dino_ubuntu
+          path: target/output/*
+
+  
+  macos:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Nwlink
+        run: |
+          npm install -g nwlink
+          echo "$HOME/.npm-global/bin" >> $GITHUB_PATH
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+
+      - name: Install just
+        uses: extractions/setup-just@v3
+
+      - name: Prepare for building
+        run: mkdir -p target/output
+        
+      - name: Build nwb
+        run: | 
+          just nwb-build
+          mv target/aarch64-apple-darwin/release/libnw_3dino_sim.dylib target/output/nw_3dino_macos.nwb
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nw_3dino_macos
+          path: target/output/*
+        

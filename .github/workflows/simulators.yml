@@ -1,0 +1,89 @@
+name: Make simulators
+on:
+  pull_request:
+    paths:
+      - 'build/sim/**'
+      - 'justfile'
+    branches:
+      - main
+  push:
+    paths:
+      - 'build/sim/**'
+      - 'justfile'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Install Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Clone Epsilon
+        run: git clone https://github.com/numworks/epsilon epsilon_simulator -b version-20
+
+      - name: Remap simulator inputs
+        run: python3 build/sim/remap_inputs.py epsilon_simulator
+
+      - name: Setup build environment
+        working-directory: epsilon_simulator
+        run: build/setup.sh --only-simulator
+
+      - name: Make simulator
+        working-directory: epsilon_simulator
+        run: make PLATFORM=simulator epsilon.bin -j 8
+
+      - name: Prepare for uploading
+        run: |
+          mkdir -p target/output
+          mv epsilon_simulator/output/release/simulator/linux/epsilon.bin target/output/epsilon_linux.bin
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: epsilon_linux
+          path: target/output/*
+
+  macos:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Install Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Clone Epsilon
+        run: git clone https://github.com/numworks/epsilon epsilon_simulator -b version-20
+
+      - name: Remap simulator inputs
+        run: python3 build/sim/remap_inputs.py epsilon_simulator
+
+      - name: Setup build environment
+        working-directory: epsilon_simulator
+        run: build/setup.sh --only-simulator
+
+      - name: Make simulator
+        working-directory: epsilon_simulator
+        run: make PLATFORM=simulator epsilon.app -j 8
+
+      - name: Prepare for uploading
+        run: |
+          mkdir -p target/output
+          mv epsilon_simulator/output/release/simulator/macos/epsilon.app target/output/epsilon_macos.app
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: epsilon_macos
+          path: target/output/*
+      
