@@ -6,6 +6,8 @@
 
 A 3D model viewer for NumWorks Epsilon.
 
+> This is a fork of [NumWorks 3D Grapher](https://github.com/shrub719/nw-3d-grapher).
+
 
 ## Installation
 
@@ -16,7 +18,7 @@ A 3D model viewer for NumWorks Epsilon.
 1. Download `nw_3dino.nwa`  
 
 1. Get the PBJ file of the 3D model you want (such as `dino.pbj`)
-   > **Note:** See [BUILDING.md](build/BUILDING.md#building-the-simulator) for instructions on how to make your own PBJs.
+   > **Note:** See [BUILDING.md](build/BUILDING.md#building-the-simulator) for instructions on how to make your own PBJs. <!-- TODO: pypi, and add to building section -->
 
 1. Connect to your calculator by USB
 
@@ -47,10 +49,10 @@ A 3D model viewer for NumWorks Epsilon.
 1. Run the `.nwb` file with the simulator in your terminal:
    ```sh
    # linux/wsl
-   ./epsilon_linux.bin --nwb ./nw_3d_grapher_linux.nwb --nwb-external-data ./dino.pbj
+   ./epsilon_linux.bin --nwb ./nw_3dino_linux.nwb --nwb-external-data ./dino.pbj
 
    # macos
-   ./epsilon_macos.app/Contents/MacOS/Epsilon --nwb ./nw_3d_grapher_macos.nwb --nwb-external-data ./dino.pbj
+   ./epsilon_macos.app/Contents/MacOS/Epsilon --nwb ./nw_3dino_macos.nwb --nwb-external-data ./dino.pbj
    ```
 
 
@@ -67,7 +69,7 @@ A 3D model viewer for NumWorks Epsilon.
 
 ## Building
 
-See [BUILDING.md](build/BUILDING.md) for instructions on how to build the app or the simulator.
+See [BUILDING.md](build/BUILDING.md) for instructions on how to build the app or pack objects.
 
 
 ## Licensing and credits
