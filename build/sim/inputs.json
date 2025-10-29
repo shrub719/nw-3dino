@@ -11,5 +11,5 @@
 
     "SWITCH": ["RETURN"],
 
-    "RESET": ["BACKSPACE"]
+    "EXIT": []
 }
