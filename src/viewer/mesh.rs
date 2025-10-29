@@ -4,7 +4,6 @@ use crate::{
     },
     constants::*
 };
-#[cfg(target_os = "none")]
 use heapless::Vec;
 use crate::external::obj::load_tris;
 
