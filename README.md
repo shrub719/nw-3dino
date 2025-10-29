@@ -74,6 +74,10 @@ See [BUILDING.md](build/BUILDING.md) for instructions on how to build the app or
 
 ## Licensing and credits
 
+As this repo contains part of my A level Computer Science coursework, it is under exam regulations. Therefore:
+- **Until August 14 2026** all rights are reserved by me. No permission is granted to copy, use, modify, or distribute any part of this project during this period.
+- **After August 15 2026**, the project is released under the [MIT License](LICENSE).
+
 Dinosaur model in `obj/dino.obj` and `dino.pbj`: Substitute from Pokémon Stadium 2 via [The Models Resource](https://models.spriters-resource.com/nintendo_64/pokemonstadium2/asset/312410/).
 
 This project is a third-party app and is not affiliated with NumWorks. NumWorks is a registered trademark of NumWorks SAS.
