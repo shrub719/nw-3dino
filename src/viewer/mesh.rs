@@ -93,7 +93,7 @@ impl Mesh {
     pub fn load_mesh_from_file(&mut self) {
         self.tris.clear();
         for tri in load_tris() {
-            self.tris.push(tri);
+            let _ = self.tris.push(tri);
         }
     }
 
@@ -124,7 +124,7 @@ impl Mesh {
 
         self.transformed_tris.clear();
         for tri in &self.tris {
-            self.transformed_tris.push(*tri * matrix);
+            let _ = self.transformed_tris.push(*tri * matrix);
         }
     }
 }
