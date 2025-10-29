@@ -14,7 +14,9 @@ A 3D model viewer for NumWorks Epsilon.
 1. Go to the [latest release](https://github.com/shrub719/nw-3dino/releases/latest)
 
 1. Download `nw_3dino.nwa`  
-   *Optionally, download the example `dino.pbj`*
+
+1. Get the PBJ file of the 3D model you want (such as `dino.pbj`)
+   > **Note:** See [BUILDING.md](build/BUILDING.md#building-the-simulator) for instructions on how to make your own PBJs.
 
 1. Connect to your calculator by USB
 
@@ -24,7 +26,7 @@ A 3D model viewer for NumWorks Epsilon.
 
 1. Click **Select a data file**
 
-1. Upload the `.pbj` file of the 3D model you want
+1. Upload the PBJ file
 
 1. Press **Install**
 
@@ -33,16 +35,23 @@ A 3D model viewer for NumWorks Epsilon.
 1. Go to the [latest release](https://github.com/shrub719/fun-numworks-apps/releases/latest)
 
 1. Download the `.nwb` file for your operating system
-
    > **Note:** on Windows, use WSL.  
-
-   *Optionally, download the example `dino.pbj`*
 
 1. Get the simulator for your operating system
    > **Note:** NumWorks does not allow simulators to be redistributed, so you will have to [patch and build the simulator yourself](build/BUILDING.md#building-the-simulator).
 
+1. Get the PBJ file of the 3D model you want (such as `dino.pbj`)
+
+   > **Note:** See [BUILDING.md](build/BUILDING.md#building-the-simulator) for instructions on how to make your own PBJs.
+
 1. Run the `.nwb` file with the simulator in your terminal:
-   <!-- TODO -->
+   ```sh
+   # linux/wsl
+   ./epsilon_linux.bin --nwb ./nw_3d_grapher_linux.nwb --nwb-external-data ./dino.pbj
+
+   # macos
+   ./epsilon_macos.app/Contents/MacOS/Epsilon --nwb ./nw_3d_grapher_macos.nwb --nwb-external-data ./dino.pbj
+   ```
 
 
 ## Usage
