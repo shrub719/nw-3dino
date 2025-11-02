@@ -1,7 +1,7 @@
 cargo-features = ["profile-rustflags"]
 [package]
 name = "nw_3dino"
-version = "0.1.0"
+version = "1.0.0"
 authors = ["shrub719"]
 edition = "2024"
 
