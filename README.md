@@ -18,7 +18,7 @@ A 3D model viewer for NumWorks Epsilon.
 1. Download `nw_3dino.nwa`  
 
 1. Get the PBJ file of the 3D model you want (such as `dino.pbj`)
-   > **Note:** See [BUILDING.md](build/BUILDING.md#building-the-simulator) for instructions on how to make your own PBJs. <!-- TODO: pypi, and add to building section -->
+   > **Note:** See [PBJ files](#pbj-files) for instructions on making your own PBJ files.
 
 1. Connect to your calculator by USB
 
@@ -43,8 +43,7 @@ A 3D model viewer for NumWorks Epsilon.
    > **Note:** NumWorks does not allow simulators to be redistributed, so you will have to [patch and build the simulator yourself](build/BUILDING.md#building-the-simulator).
 
 1. Get the PBJ file of the 3D model you want (such as `dino.pbj`)
-
-   > **Note:** See [BUILDING.md](build/BUILDING.md#building-the-simulator) for instructions on how to make your own PBJs.
+   > **Note:** See [PBJ files](#pbj-files) for instructions on making your own PBJ files.
 
 1. Run the `.nwb` file with the simulator in your terminal:
    ```sh
@@ -53,6 +52,20 @@ A 3D model viewer for NumWorks Epsilon.
 
    # macos
    ./epsilon_macos.app/Contents/MacOS/Epsilon --nwb ./nw_3dino_macos.nwb --nwb-external-data ./dino.pbj
+   ```
+
+### PBJ files
+
+You can convert `.obj` files to `.pbj` files with the PyPi library `nw-3dino-convert`. 
+
+1. Install it with:
+   ```sh
+   pip install nw-3dino-convert
+   ```
+
+1. Then, to convert a file (e.g. `meshes/dino.obj`), run:
+   ```sh
+   nw-3dino-convert meshes/dino.obj
    ```
 
 
