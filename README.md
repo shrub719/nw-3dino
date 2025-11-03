@@ -73,11 +73,19 @@ You can convert `.obj` files to `.pbj` files with the PyPi library `nw-3dino-con
 
 ### NumWorks calculator
 
-<!-- TODO: controls, features -->
+**Rotate:** D-pad
+**Tilt:** Shift, Alpha
+**Scale:** Plus, Minus
+**Toggle shading:** OK
 
 ### Simulator
 
-<!-- TODO: remapped sim controls -->
+**Rotate:** WASD, Arrow keys
+**Tilt:** Q, E, Shift, Ctrl
+**Scale:** R, F, Plus, Minus
+**Toggle shading:** OK
+
+> **Note:** On-screen calculator controls work as well.
 
 
 ## Building
