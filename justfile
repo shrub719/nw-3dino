@@ -5,12 +5,12 @@ current_target := `rustc -Vv | grep host | awk '{print $2}'`
 # creates .pbj in target/obj from .obj source file
 # input_file contains .obj file location (e.g. obj/meshes/dino.obj)
 # obj_name contains .pbj file name (e.g. dino)
+# DEPRECATED: use nw-3dino-convert instead
 obj input_file obj_name:
     mkdir -p target/obj
     python3 build/obj/pack_obj.py {{input_file}} {{obj_name}}
 
-# automatically creates .pbj from obj/meshes
-# obj_name contains .obj and .obj file name (e.g. dino)
+# automatically creates .pbj from obj/meshes - obj_name is the name of the .pbj file
 dev-obj obj_name:
     just obj build/obj/meshes/{{obj_name}}.obj {{obj_name}}
 
