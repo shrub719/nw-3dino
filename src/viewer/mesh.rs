@@ -10,7 +10,7 @@ use crate::external::obj::load_tris;
 fn get_projection_matrix(scale: f32) -> Matrix4 {
     Matrix4 ([
         [120.0, 0.0  , 0.0      , 160.0],
-        [0.0  , 120.0, 0.0      , 110.0],
+        [0.0  , 120.0, 0.0      , 130.0],
         [0.0  , 0.0  , 0.5/scale, 0.0  ],
         [0.0  , 0.0  , 0.0      , 1.0  ]
     ])

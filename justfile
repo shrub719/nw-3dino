@@ -22,6 +22,7 @@ build:
     cargo build --release --bin nw_3dino --target=thumbv7em-none-eabihf
 
 # builds dev profile
+[default]
 dev:
     cargo build --bin nw_3dino --target=thumbv7em-none-eabihf
 
