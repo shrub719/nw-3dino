@@ -17,76 +17,26 @@ fn get_projection_matrix(scale: f32) -> Matrix4 {
 }
 
 fn get_scale_matrix(scale: f32) -> Matrix4 {
+    let s = scale / 10.0;
     Matrix4 ([
-        [scale, 0.0  , 0.0  , 0.0],
-        [0.0  , scale, 0.0  , 0.0],
-        [0.0  , 0.0  , scale, 0.0],
+        [s, 0.0  , 0.0  , 0.0],
+        [0.0  , s, 0.0  , 0.0],
+        [0.0  , 0.0  , s, 0.0],
         [0.0  , 0.0  , 0.0  , 1.0]
     ])
-}
-
-#[derive(Clone, Copy)]
-pub struct Domain {
-    pub x0: f32,
-    pub y0: f32,
-    pub z0: f32,
-    pub x1: f32,
-    pub y1: f32,
-    pub z1: f32,
-    pub matrix: Matrix4
-}
-impl Domain {
-    pub fn new() -> Self {
-        Domain {
-            x0: -10.0,
-            y0: -10.0,
-            z0: -10.0,
-            x1: 10.0,
-            y1: 10.0,
-            z1: 10.0,
-            matrix: Matrix4::new()
-        }
-    }
-
-    pub fn update_matrix(&mut self) {
-        let dx = self.x1 - self.x0;
-        let dy = self.y1 - self.y0;
-        let dz = self.z1 - self.z0;
-
-        let x_scale = 2.0 / dx;
-        let y_scale = 2.0 / dy;
-        let z_scale = 2.0 / dz;
-
-        let x_trans = -self.x0 - dx/2.0;
-        let y_trans = -self.y0 - dy/2.0;
-        let z_trans = -self.z0 - dz/2.0;
-
-        self.matrix = Matrix4 ( [
-            [x_scale, 0.0    , 0.0    , x_trans*x_scale],
-            [0.0    , y_scale, 0.0    , y_trans*y_scale],
-            [0.0    , 0.0    , z_scale, z_trans*z_scale],
-            [0.0    , 0.0    , 0.0    , 1.0            ]
-        ] )
-    }
 }
 
 pub struct Mesh {
     pub tris: Vec<Triangle3, { limits::MAX_TRIS }>,
     pub transformed_tris: Vec<RTriangle3, { limits::MAX_TRIS }>,
-    // pub lines: Vec<Line>,
-    pub domain: Domain,
     rotation: Quaternion,
     pub scale: f32
 }
 impl Mesh {
     pub fn new() -> Self {
         Self {
-            tris: Vec::new(), // TODO: DON'T let these be reallocated lmao
-            // TODO: maybe use arrays instead cause these don't seem to be properly initialised
-            // (attempt to subtract with overflow errors in random places when n > ~824)
+            tris: Vec::new(),
             transformed_tris: Vec::new(),
-            // lines:  Vec::with_capacity(limits::MAX_LINES), // TODO: transform lines
-            domain: Domain::new(),
             rotation: Quaternion::default(),
             scale: 0.5
         }
@@ -114,6 +64,7 @@ impl Mesh {
     }
 
     pub fn update_scale(&mut self, scale_change: f32, delta_time: f32) {
+        // TODO: linearly interpolate a proportional (exponential?) change
         self.scale += settings::SCALE_SPEED * scale_change * delta_time;
         if self.scale < 0.0 { self.scale = 0.0 }
     }
@@ -122,7 +73,6 @@ impl Mesh {
         let mut matrix = get_projection_matrix(self.scale);
         matrix *= self.rotation.get_rotation_matrix();
         matrix *= get_scale_matrix(self.scale);
-        matrix *= self.domain.matrix;
 
         self.transformed_tris.clear();
         for tri in &self.tris {

@@ -95,7 +95,6 @@ impl Viewer {
     pub fn main_loop(&mut self) {
         Viewer::setup_ui();
 
-        self.mesh.domain.update_matrix();
         self.mesh.load_mesh_from_file();
 
         // main loop - runs every frame

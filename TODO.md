@@ -2,5 +2,6 @@
 
 - [x] Better justfile
 - [x] Sh/Al -> ( )
-- [ ] Remove Domain and other 3d-grapher things
+- [x] Remove Domain and other 3d-grapher things
+- [ ] Import/switch between multiple objects
 
