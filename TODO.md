@@ -1,6 +1,6 @@
 # Todo 
 
 - [x] Better justfile
-- [ ] Sh/Al -> ( )
+- [x] Sh/Al -> ( )
 - [ ] Remove Domain and other 3d-grapher things
 

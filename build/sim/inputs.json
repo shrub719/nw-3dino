@@ -3,8 +3,8 @@
     "D_UP": ["UP", "W"],
     "D_LEFT": ["LEFT", "A"],
     "D_RIGHT": ["RIGHT", "D"],
-    "D_SP_1": ["LCTRL", "RCTRL", "E"],
-    "D_SP_2": ["LSHIFT", "RSHIFT", "Q"],
+    "D_SP_1": ["E", "0"],
+    "D_SP_2": ["Q", "9"],
 
     "INCREASE": ["KP_PLUS", "EQUALS", "R", "KP_MINUS"],
     "DECREASE": ["MINUS", "F"],

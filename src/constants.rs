@@ -45,8 +45,8 @@ pub mod controls {
     pub const D_UP: Key =       Key::Up;
     pub const D_LEFT: Key =     Key::Left;
     pub const D_RIGHT: Key =    Key::Right;
-    pub const D_SP_1: Key =     Key::Alpha;
-    pub const D_SP_2: Key =     Key::Shift;
+    pub const D_SP_1: Key =     Key::RightParenthesis;
+    pub const D_SP_2: Key =     Key::LeftParenthesis;
 
     pub const INCREASE: Key =   Key::Plus;
     pub const DECREASE: Key =   Key::Minus;
