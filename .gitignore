@@ -4,3 +4,4 @@ epsilon_simulator
 .venv
 just.sh
 test
+sim

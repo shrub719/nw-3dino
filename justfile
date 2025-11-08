@@ -48,11 +48,13 @@ nwb-dev:
 
 # runs dev profile on simulator
 [macos]
-run: nwb-dev
-    ./sim/epsilon.app/Contents/MacOS/Epsilon --nwb ./target/{{current_target}}/debug/libnw_3d_grapher_sim.dylib
+run obj_name="dino": nwb-dev
+    just dev-obj {{obj_name}}
+    ./sim/epsilon.app/Contents/MacOS/Epsilon --nwb ./target/{{current_target}}/debug/libnw_3dino_sim.dylib --nwb-external-data target/obj/{{obj_name}}.pbj
 [linux]
-run: nwb-dev
-    ./sim/epsilon.bin --nwb ./target/{{current_target}}/debug/libnw_3d_grapher_sim.so
+run obj_name="dino": nwb-dev
+    just dev-obj {{obj_name}}
+    ./sim/epsilon.bin --nwb ./target/{{current_target}}/debug/libnw_3dino_sim.so --nwb-external-data target/obj/{{obj_name}}.pbj
 
 # ===== SIMULATOR: LEGACY =====
 
