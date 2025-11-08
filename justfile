@@ -46,6 +46,16 @@ nwb-build:
 nwb-dev:
     cargo build --lib --target={{current_target}}
 
+# runs dev profile on simulator
+[macos]
+run: nwb-dev
+    ./sim/epsilon.app/Contents/MacOS/Epsilon --nwb ./target/{{current_target}}/debug/libnw_3d_grapher_sim.dylib
+[linux]
+run: nwb-dev
+    ./sim/epsilon.bin --nwb ./target/{{current_target}}/debug/libnw_3d_grapher_sim.so
+
+# ===== SIMULATOR: LEGACY =====
+
 # remaps sim inputs - sim_dir is the directory containing epsilon
 remap-sim sim_dir="epsilon_simulator":
     python3 build/sim/remap_inputs.py {{sim_dir}}
@@ -80,8 +90,6 @@ nwb-dev-run obj_name="dino": nwb-dev
 
 
 # ===== UTILS =====
-
-ndev: nwb-dev-run
 
 clean:
     cargo clean
